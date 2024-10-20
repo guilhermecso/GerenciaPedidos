@@ -361,3 +361,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/GerenciaPedidos/GerenciaPedidos.db-shm
+/GerenciaPedidos/GerenciaPedidos.db-wal
+/GerenciaPedidos/GerenciaPedidos.db

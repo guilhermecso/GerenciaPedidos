@@ -51,7 +51,8 @@ public class OrderService
 
         order.Description = dto.Description;
 
-        var products = new List<OrderProduct>();
+        order.Products.Clear();
+
         for (int i = 0; i < dto.ProductsIds.Count; i++)
         {
             var product = await _productRepository.GetByIdAsync(dto.ProductsIds[i]);

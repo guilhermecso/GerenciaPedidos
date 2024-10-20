@@ -15,7 +15,7 @@ public class Order
     public bool Open { get; set; } = true;
 
     private readonly List<OrderProduct> _products = new List<OrderProduct>();
-    public IReadOnlyCollection<OrderProduct> Products => _products;
+    public ICollection<OrderProduct> Products => _products;
 
     public Order(string description)
     {
