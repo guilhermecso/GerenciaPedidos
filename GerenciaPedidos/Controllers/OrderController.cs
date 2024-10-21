@@ -21,7 +21,7 @@ public class OrderController : ControllerBase
     }
 
     [HttpPost]
-    [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(Order))]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Order))]
     public async Task<IActionResult> CreateOrder([FromBody] CreateOrderDTO dto)
     {
         Order order = await _orderService.CreateOrderAsync(dto);

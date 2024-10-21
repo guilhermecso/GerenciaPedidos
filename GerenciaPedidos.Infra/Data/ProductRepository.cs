@@ -29,9 +29,12 @@ public class ProductRepository : IProductRepository
         throw new NotImplementedException();
     }
 
-    public Task<IEnumerable<Product>> GetAllAsync(int take, int skip)
+    public async Task<IEnumerable<Product>> GetAllAsync(int take, int skip)
     {
-        throw new NotImplementedException();
+        return await _context.Products
+            .Skip(skip)
+            .Take(take)
+            .ToListAsync();
     }
 
     public async Task<Product> GetByIdAsync(int id)

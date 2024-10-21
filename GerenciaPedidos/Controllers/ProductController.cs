@@ -1,5 +1,6 @@
 ﻿using GerenciaPedidos.Application.DTOs;
 using GerenciaPedidos.Application.Services;
+using GerenciaPedidos.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GerenciaPedidos.WebAPI.Controllers;
@@ -18,10 +19,18 @@ public class ProductController : ControllerBase
     }
 
     [HttpPost]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Product))]
     public async Task<IActionResult> CreateProduct([FromBody] CreateProductDTO dto)
     {
-        await _productService.CreateProductAsync(dto);
-        return Ok();
+        Product product = await _productService.CreateProductAsync(dto);
+        return Ok(product);
+    }
+
+    [HttpGet]
+    public async Task<IEnumerable<Product>> GetProductsAsync([FromQuery] int take = 25, [FromQuery] int skip = 0)
+    {
+        IEnumerable<Product> products = await _productService.GetAllAsync(take, skip);
+        return products;
     }
 
 }
