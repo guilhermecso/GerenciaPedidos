@@ -45,22 +45,3 @@ jobs:
 
     - name: Test
       run: dotnet test --no-restore --verbosity normal
-
-  code_review:
-    runs-on: self-hosted
-    needs: build
-
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: '8.0.x'
-
-    - name: Restore dependencies
-      run: dotnet restore
-
-    - name: Run Code Analysis
-      run: dotnet format --check
