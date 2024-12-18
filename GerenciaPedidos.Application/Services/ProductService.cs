@@ -22,6 +22,7 @@ public class ProductService
         await _productRepository.AddAsync(product);
         return product;
     }
+
     public async Task<IEnumerable<Product>> GetAllAsync(int take, int skip)
     {
         return await _productRepository.GetAllAsync(take, skip);
