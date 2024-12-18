@@ -38,7 +38,14 @@ namespace GerenciaPedidos.Tests
 
             // Assert
             Assert.Equal((int)HttpStatusCode.BadRequest, context.Response.StatusCode);
-            _loggerMock.Verify(logger => logger.LogError(It.IsAny<string>()), Times.Once);
+            _loggerMock.Verify(
+                logger => logger.Log(
+                    LogLevel.Error,
+                    It.IsAny<EventId>(),
+                    It.Is<It.IsAnyType>((v, t) => v.ToString().Contains("Validation Error")),
+                    It.IsAny<Exception>(),
+                    (Func<It.IsAnyType, Exception?, string>)It.IsAny<object>()),
+                Times.Once);
         }
 
         [Fact]
@@ -53,7 +60,14 @@ namespace GerenciaPedidos.Tests
 
             // Assert
             Assert.Equal((int)HttpStatusCode.NotFound, context.Response.StatusCode);
-            _loggerMock.Verify(logger => logger.LogError(It.IsAny<string>()), Times.Once);
+            _loggerMock.Verify(
+                logger => logger.Log(
+                    LogLevel.Error,
+                    It.IsAny<EventId>(),
+                    It.Is<It.IsAnyType>((v, t) => v.ToString().Contains("Not Found")),
+                    It.IsAny<Exception>(),
+                    (Func<It.IsAnyType, Exception?, string>)It.IsAny<object>()),
+                Times.Once);
         }
 
         [Fact]
@@ -68,7 +82,14 @@ namespace GerenciaPedidos.Tests
 
             // Assert
             Assert.Equal((int)HttpStatusCode.InternalServerError, context.Response.StatusCode);
-            _loggerMock.Verify(logger => logger.LogError(It.IsAny<string>()), Times.Once);
+            _loggerMock.Verify(
+                logger => logger.Log(
+                    LogLevel.Error,
+                    It.IsAny<EventId>(),
+                    It.Is<It.IsAnyType>((v, t) => v.ToString().Contains("Unexpected Error")),
+                    It.IsAny<Exception>(),
+                    (Func<It.IsAnyType, Exception?, string>)It.IsAny<object>()),
+                Times.Once);
         }
     }
 }
