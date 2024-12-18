@@ -17,13 +17,11 @@ public class OrderProduct
     public int Quantity { get; private set; }
     public decimal SubTotal { get; private set; }
 
-    public OrderProduct() { }
-
     public OrderProduct(Order order, Product product, int quantity)
     {
         Order = order;
         Product = product;
-        Quantity= quantity;
+        Quantity = quantity;
         SubTotal = product.Value * Quantity;
     }
 }

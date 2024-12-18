@@ -57,7 +57,7 @@ public class OrderController : ControllerBase
         Order order = await _orderService.CloseOrderAsync(id);
         return Ok(order);
     }
-    
+
     [HttpPut]
     [Route("{id}/open-order")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Order))]

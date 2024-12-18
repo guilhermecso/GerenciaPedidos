@@ -100,7 +100,7 @@ public class OrderService
     public async Task<Order> OpenOrderAsync(int id)
     {
         var order = await _orderRepository.GetByIdAsync(id) ?? throw new KeyNotFoundException("Order not found");
-        
+
         if (order.Open == true)
         {
             throw new ValidationException("The order is already open.");
